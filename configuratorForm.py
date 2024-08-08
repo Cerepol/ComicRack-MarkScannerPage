@@ -111,7 +111,6 @@ class configuratorForm(Form):
 		line = self.currentLine()
 		col = self._textBox1.SelectionStart - self._textBox1.GetFirstCharIndexFromLine(line);
 		self._toolStripStatusLabel1.Text = 'Line %d - Col %d' % (line + 1, col + 1)
-#		MessageBox.Show(str(validRule))
 
 	def TextBox1KeyPress(self, sender, e):
 		self.setLineInfo()
@@ -127,7 +126,6 @@ class configuratorForm(Form):
 		if File.Exists(self.theFile):
 			s = File.ReadAllLines(self.theFile)
 			tmp = str('')
-			# s = [line for line in s if str.Trim(line) <> '']
 			for line in s:
 				tmp += '%s%s' % (line, System.Environment.NewLine)
 			if len(s) == 0 and theFile == globalvars.LOGFILE:
@@ -143,7 +141,6 @@ class configuratorForm(Form):
 		return
 
 	def ConfiguratorFormLoad(self, sender, e):
-		#self.Text = 'Data Manager for ComicRack - Version %s' % (globalvars.VERSION)
 		self.Text = 'Mark Scanner Pages logfile'
 		self.showTheFile
 		self._textBox1.SelectionLength = 0
@@ -188,10 +185,6 @@ class configuratorForm(Form):
 		attention: lines start with index 0
 		'''
 		line = int(line) 
-#		tmp = self._textBox1.Text.split(System.Environment.NewLine)
-
-#		MessageBox.Show(tmp[line])
-#		myLength = len(tmp[line])
 		self._textBox1.SelectionStart = self._textBox1.GetFirstCharIndexFromLine(line)
 		self._textBox1.SelectionLength = self.lineLength(line)
 		self._textBox1.ScrollToCaret()

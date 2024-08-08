@@ -64,8 +64,6 @@ class mspProcesser(object):
 	def getPageNameList(self, pages, imgProvider):
 		pageNameList = []
 		
-		#print "PageInfos: " + str(pages.Count)
-		#imgProvider = book.OpenProvider(book.Pages.Count)
 	#	for page in book.Pages:
 		for page in pages:
 			imgInfo = imgProvider.GetImageInfo(page.ImageIndex)
@@ -90,10 +88,8 @@ class mspProcesser(object):
 			pages = nav.GetPageInfos()
 			
 			# make a guess at the scanner page
-			#count = book.Pages.Count #BAD asking the books ComicInfo for pages can return non-updated info
 			count = pages.Count
 			imgProvider = book.OpenProvider(count)
-			#print("PageCount: " + str(count))
 			
 			if count <= 0:
 				self.theLog += '{0} returned zero page count. Marking not run.'.format(book.Caption)
@@ -126,10 +122,7 @@ class mspProcesser(object):
 			mode_length = sorted_buckets[0][0]
 
 			# we are only going to consider the final image file:
-			#print("NameList length: " + str(len(name_list)))
-			#print("Count-1 " + str(count-1))
 			final_name = name_list[count - 1]
-			#print("FinalName: " + final_name)
 			
 			common_length_list = list()
 			for name in name_list:
@@ -151,7 +144,6 @@ class mspProcesser(object):
 			#print(scanner_page_index)
 			if scanner_page_index:
 				return pages, pages[scanner_page_index], final_name
-				#return book.Pages[scanner_page_index]
 			else:
 				return pages, None, None
 		

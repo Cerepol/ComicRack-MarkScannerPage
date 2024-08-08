@@ -81,7 +81,7 @@ class mspProgressForm(Form):
 		self._backgroundWorker1.DoWork += self.BackgroundWorker1DoWork
 		self._backgroundWorker1.ProgressChanged += self.BackgroundWorker1ProgressChanged
 		self._backgroundWorker1.RunWorkerCompleted += self.BackgroundWorker1RunWorkerCompleted
-		#self._backgroundWorker1.CancellationPending += self.BackgroundWorker1Cancellation
+		self._backgroundWorker1.CancellationPending += self.BackgroundWorker1Cancellation
 		# 
 		# buttonCancel
 		# 
@@ -137,13 +137,10 @@ class mspProgressForm(Form):
 		# ------------------------------------------------------
 		# run the parsed code over the books:
 		# ------------------------------------------------------
-		# userIni = iniFile(globalvars.USERINI)
 		dtStarted = System.DateTime.Now
 		theLog += 'Time: {0}\n'.format(dtStarted)
-		#print "TEST 1"
 
 		if self.theProcess in (PROCESS_ON, PROCESS_OFF):
-			#print "TEST 2"
 			self.maxVal = self.theBooks.Length
 			self._progressBar.Maximum = self.maxVal
 			self._progressBar.Step = 1

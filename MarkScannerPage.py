@@ -44,7 +44,7 @@ def MarkScannerPage(books):
 	progBar = mspProgressForm(books, globalvars.PROCESS_ON)
 	
 	progBar.ShowDialog()
-	#progBar.errorLevel = 2
+
 	if progBar.errorLevel == 0:
 		msg = "Finished. I've inspected %d books.\nDo you want to take look at the log file?" % (progBar.stepsPerformed)
 	
